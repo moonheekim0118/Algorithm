@@ -12,8 +12,8 @@ function getDAYS(startDay){
     return SpecificDays;
 }
 
-function solution(a, b) {
-    const DAY=getDAYS('FRI');
+function solution(a, b,startDay='FRI') {
+    const DAY=getDAYS(startDay);
     const totalDates=[0,31,29,31,30,31,30,31,31,30,31,30,31]
     .splice(a===1?0:1,a===1?1:a-1).reduce((accumulator, value)=>accumulator+value)+b;
 
