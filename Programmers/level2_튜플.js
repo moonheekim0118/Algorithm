@@ -10,10 +10,8 @@ function solution(s) {
             counter.push({idx:s[i], cnt:1});
         }
     }
-    console.log(counter);
     counter.sort((a,b)=>b.cnt-a.cnt);
     counter.forEach((v)=>answer.push(+v.idx));
-    console.log(answer);
     return answer;
 }
 solution("{{20,111},{111}}");
