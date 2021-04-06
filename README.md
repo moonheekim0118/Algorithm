@@ -85,7 +85,7 @@ let hex = parseInt(bin,2).toString(16);
 
 
 
-## 🍅 중복된 요소를 제거하고 싶을 때 
+### 🍅 중복된 요소를 제거하고 싶을 때 
 
 자바스크립트에는 바로바로 **set** 이라는 객체가 있다. new Set을 생성하고 파라미터로 배열을 넣으면 배열 내부의 중복된 요소가 제거된다<br/>
 
@@ -103,7 +103,7 @@ let set = [...new Set(array)]
 
 
 
-## 🍅 1부터 N 까지의 요소를 담는 배열 만들기 
+### 🍅 1부터 N 까지의 요소를 담는 배열 만들기 
 
 
 
@@ -117,6 +117,28 @@ let set = [...new Set(array)]
 <br/>
 
 <br/>
+
+
+
+### 🍅 해쉬맵
+
+- 해쉬맵이란 해쉬테이블 처럼 `key-value 쌍` 으로 데이터를 저장하여, 추후에 사용할 때 빠르게 접근 할 수 있도록 도와주는 자료구조이다.
+- 자바스크립트에서는 `ES6 Map ` 을 사용하여 구현할 수 있으며, 자바스크립트의 일반 객체와 다른점은 key 값으로 여러가지 타입을 넣을 수 있다는 것이다.  또한 Linked List 로 구현되어있기 때문에 orderable 하고, iterable 하며, 지정된 size에 따라 한정된 데이터만 저장 할 수도 있다. 
+
+```javascript
+let hasMap = new Map([[1,'first'],[2,'second'],[3,'third']]);
+```
+
+- hasMap.size() - 해쉬맵에 저장된 요소 갯수 반환
+- hasMap.get(key) - key 값에 해당하는 요소 반환
+- hasMap.has(key) - 해쉬맵에 key가 존재 여부 반환
+- hasMap.setkey, value) - 해쉬맵에 저장 
+- hasMap.delete(key) - key 값에 해당하는 요소 삭제
+- hasMap.clear() - 모든 엘리먼트 삭제    
+
+
+
+
 
 
 
@@ -233,4 +255,4 @@ var hasCycle = function(head) {
 
 #### 사이클 시작점 
 
-- 자연스럽게 사이클의 시작점은, `거북이가 토끼를 처음 앞지르게 되었을 때 토끼의 위치`가 된다.
+- 사이클의 시작점은`거북이가 토끼를 처음 앞지르게 되었을 때 토끼의 위치`가 된다.
