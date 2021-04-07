@@ -132,13 +132,17 @@ let hasMap = new Map([[1,'first'],[2,'second'],[3,'third']]);
 - hasMap.size() - 해쉬맵에 저장된 요소 갯수 반환
 - hasMap.get(key) - key 값에 해당하는 요소 반환
 - hasMap.has(key) - 해쉬맵에 key가 존재 여부 반환
-- hasMap.setkey, value) - 해쉬맵에 저장 
+- hasMap.set(key, value) - 해쉬맵에 저장 
 - hasMap.delete(key) - key 값에 해당하는 요소 삭제
 - hasMap.clear() - 모든 엘리먼트 삭제    
 
 
 
+<br/>
 
+<br/>
+
+<br/>
 
 
 
