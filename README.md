@@ -260,3 +260,82 @@ var hasCycle = function(head) {
 #### 사이클 시작점 
 
 - 사이클의 시작점은`거북이가 토끼를 처음 앞지르게 되었을 때 토끼의 위치`가 된다.
+
+
+
+
+
+### 🍅 [탐색] Binary Search, Lower bound and Upper bound 
+
+#### Binary Search - 정렬된 자료에서 특정 값을 찾아야 할 경우
+
+- 정렬되어있을 경우에는 이분탐색을 사용하면 특정 값을 O(log n) 의 시간 복잡도로 찾을 수 있다.
+
+```javascript
+function binarySearch(array, target, length){
+    let start = 0;
+    let end = length-1;
+    while(start<=end){
+        let mid = start + Math.floor((end-start)/2);
+        if(array[mid]===target){
+            return mid;
+        } else if(array[mid] > target){
+            end=mid-1;
+        } else {
+            start=mid+1;
+        }
+    }
+    return -1; 
+}
+```
+
+
+
+<br/>
+
+
+
+#### LowerBound - 정렬된 자료에서 target 이상이 처음 나오는 위치를 찾아준다.
+
+- 이분탐색을 응용한 방법이다.
+
+```javascript
+function getLowerBound(array,target,length){
+    let low = 0;
+    let high = length;
+    while(low<high){
+        let mid = low + Math.floor((high-low)/2);
+        if(array[mid] < target){
+            low = mid + 1;
+        } else {
+            high = mid;
+        }
+    }
+    return low;
+}
+```
+
+
+
+<br/>
+
+#### UpperBound - 정렬된 자료에서 target 을 초과한 값이 처음 나오는 위치를 찾아준다.
+
+```javascript
+function getUpperBound(array,target,length){
+    let low = 0;
+    let high = length;
+    while(low<high){
+       let mid = low + Math.floor((high-low)/2);
+        if(array[mid] <= target){
+            low = mid+1;
+        } else{
+            high = mid;
+        }
+    }
+    return high;
+}
+```
+
+
+
