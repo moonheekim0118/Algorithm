@@ -142,6 +142,17 @@ let hasMap = new Map([[1,'first'],[2,'second'],[3,'third']]);
 
 <br/>
 
+### 🍅 알파벳 인덱스 값 저장해놓기 
+
+```javascript
+  const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
+  const dictionary = letters.reduce((d, a, i) => ((d[a] = i + 1), d), {});
+```
+
+
+
+
+
 <br/>
 
 
