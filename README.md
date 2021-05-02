@@ -155,6 +155,22 @@ let hasMap = new Map([[1,'first'],[2,'second'],[3,'third']]);
 
 <br/>
 
+<br/>
+
+<br/>
+
+
+
+### 🍅 2차원 배열 초기화하기
+
+```javascript
+  const matrix = new Array(N + 1)
+    .fill(INF)
+    .map(() => new Array(N + 1).fill(INF));
+```
+
+
+
 
 
 # 👩🏻‍🍳 JavaScript Algorithm's Recipes

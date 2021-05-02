@@ -1,50 +1,41 @@
+function splitWords(length, fullWords) {
+  let words = "";
+  let cluster = [];
+  for (let i = 0; i < length - 1; i++) {
+    words = fullWords.substr(i, 2);
+    if (words.match(/[A-Za-z]{2}/)) {
+      cluster.push(words);
+    }
+  }
+  return cluster;
+}
+
 function solution(str1, str2) {
   var answer = 0;
+  let INIT = 65536;
   str1 = str1.toUpperCase();
   str2 = str2.toUpperCase();
-  const format = /[ `!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~0-9]/;
 
-  let cluster1 = [];
-  let cluster2 = [];
-  let words = `${str1[0]}${str1[1]}`;
-  for (let i = 1; i < str1.length; i++) {
-    if (!format.test(words)) {
-      cluster1.push(words);
-    }
-    words = words.slice(1);
-    words += str1[i + 1];
-  }
-  words = `${str2[0]}${str2[1]}`;
-  for (let i = 1; i < str2.length; i++) {
-    if (!format.test(words)) {
-      cluster2.push(words);
-    }
-    words = words.slice(1);
-    words += str2[i + 1];
-  }
+  const cluster1 = splitWords(str1.length, str1);
+  const cluster2 = splitWords(str2.length, str2);
 
   let intersection = 0;
-  const cluster1Size = cluster1.length;
-  const cluster2Size = cluster2.length;
-  const compare = cluster1Size > cluster2Size;
-  let checker = compare ? cluster2 : cluster1;
-  let target = compare ? cluster1 : cluster2;
-  let visited = {};
-  for (let value of checker) {
-    if (visited[value]) continue;
-    const found1 = checker.filter((v) => v === value).length;
-    const found2 = target.filter((v) => v === value).length;
-    if (found2 !== 0) {
-      intersection += Math.min(found1, found2);
-    }
-    visited[value] = true;
+  let union = 0;
+  const merged = [...new Set([...cluster1, ...cluster2])];
+
+  for (let e of merged) {
+    const found1 = cluster1.filter((v) => v === e).length;
+    const found2 = cluster2.filter((v) => v === e).length;
+    intersection += Math.min(found1, found2);
+    union += Math.max(found1, found2);
   }
-  const union = cluster1Size + cluster2Size - intersection;
-  if (intersection === 0 || union === 0) return 65536;
-  answer = Math.floor((intersection / union) * 65536);
+
+  console.log(union, intersection);
+  if (union === 0) return INIT;
+  answer = Math.floor((intersection / union) * INIT);
   return answer;
 }
 
-console.log(solution("aa1+aa2", "AAAA12"));
+console.log(solution("handshake", "shake hands"));
 
 //node level2_뉴스클러스터링
