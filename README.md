@@ -169,6 +169,22 @@ let hasMap = new Map([[1,'first'],[2,'second'],[3,'third']]);
     .map(() => new Array(N + 1).fill(INF));
 ```
 
+<br/>
+
+<br/>
+
+<br/>
+
+
+
+### 🍅 2차원 배열 1차원 배열로 풀기
+
+```javascript
+const newArr= [].concat(...twoDimesionArr);
+```
+
+
+
 
 
 
