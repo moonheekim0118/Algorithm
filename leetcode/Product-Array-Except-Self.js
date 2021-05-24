@@ -3,13 +3,17 @@
  * @return {number[]}
  */
 var productExceptSelf = function (nums) {
-  const ans = [];
-  for (let i = 0; i < nums.length; i++) {
-    const sum = nums.reduce((prev, curr, idx) => {
-      if (idx === i) return prev;
-      return (prev *= curr);
-    }, 1);
-    ans.push(sum);
+  const sum = nums.reduce((prev, curr) => (prev *= curr), 1);
+  const zeros = nums.filter((v) => v !== 0);
+  let withoutZero = 0;
+  if (zeros.length === nums.length - 1) {
+    withoutZero = zeros.reduce((prev, curr) => (prev *= curr), 1);
   }
-  return ans;
+  for (let i = 0; i < nums.length; i++) {
+    if (nums[i] === 0) nums[i] = withoutZero;
+    else {
+      nums[i] = Math.floor(sum / nums[i]);
+    }
+  }
+  return nums;
 };
