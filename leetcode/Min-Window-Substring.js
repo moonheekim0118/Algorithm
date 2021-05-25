@@ -6,25 +6,28 @@
 var minWindow = function (s, t) {
   const n = s.length;
   const m = t.length;
-  let ans = "";
-  let min = n + 1;
-  for (let i = 0; i < n; i++) {
-    const set = new Set(t.split(""), s[i]);
-    let j = i + 1;
-    while (j <= n) {
-      const length = set.size;
 
-      if (length === j - i) {
-        if (min > length) {
-          ans = s.slice(i, j);
-          console.log(ans, set);
-          min = length;
-        }
-        break;
+  const dictionary = [...new Array(128)].reduce((acc, _, index) => {
+    return { ...acc, [+index]: 0 };
+  }, {});
+  for (let i = 0; i < m; i++) {
+    dictionary[t[i].charCodeAt(0)]++;
+  }
+  let head = 0;
+  let begin = 0;
+  let end = 0;
+  let cnt = m;
+  let min = Number.MAX_VALUE;
+
+  while (end < n) {
+    if (dictionary[s[end++].charCodeAt(0)]-- > 0) cnt--;
+    while (cnt === 0) {
+      if (end - begin < min) {
+        min = end - begin;
+        head = begin;
       }
-      set.add(s[j]);
-      j++;
+      if (dictionary[s[begin++].charCodeAt(0)]++ === 0) cnt++;
     }
   }
-  return ans;
+  return min === Number.MAX_VALUE ? "" : s.substr(head, min);
 };
