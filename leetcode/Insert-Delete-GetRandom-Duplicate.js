@@ -30,8 +30,8 @@ RandomizedCollection.prototype.insert = function (val) {
 RandomizedCollection.prototype.remove = function (val) {
   if (this.hashMap.has(val)) {
     const indexList = this.hashMap.get(val);
-    const lastIndex = indexList[indexList.length - 1];
     indexList.pop();
+    const lastIndex = indexList[indexList.length - 1];
     this.list.splice(lastIndex, 1);
     this.hashMap.set(val, indexList);
   }
