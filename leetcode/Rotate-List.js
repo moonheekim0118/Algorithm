@@ -10,4 +10,28 @@
  * @param {number} k
  * @return {ListNode}
  */
-var rotateRight = function (head, k) {};
+var rotateRight = function (head, k) {
+  function rotate() {
+    if (!head) return;
+    let prev = head.val;
+    let curr = head.next;
+    while (curr) {
+      let temp = curr.val;
+      curr.val = prev;
+      prev = temp;
+      curr = curr.next;
+    }
+    head.val = prev;
+  }
+
+  let size = 0;
+  let temp = head;
+  while (temp) {
+    size++;
+    temp = temp.next;
+  }
+  const count = k % size;
+  let i = 0;
+  while (i++ < count) rotate();
+  return head;
+};
