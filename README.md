@@ -160,6 +160,19 @@ const matrix = new Array(N + 1).fill(INF).map(() => new Array(N + 1).fill(INF));
 const newArr = [].concat(...twoDimesionArr);
 ```
 
+<br/><br/>
+
+### 🍅 문자열 부분 가져오기
+
+- 첫번째 인자 : 시작하는 인덱스 
+- 두번째 인자 : 끝나는 인덱스 + 1
+
+```javascript
+const str = "alogrithm";
+console.log(str.substring(0,3)); // alo
+
+```
+
 # 👩🏻‍🍳 JavaScript Algorithm's Recipes
 
 ### 🍅 [배열] 투포인터
