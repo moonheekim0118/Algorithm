@@ -5,7 +5,7 @@ function solution(orders, course) {
     
     function combination(order, n,tmp,index){
         if(tmp.length === n) {
-            const str = tmp.sort().join("");
+            const str = tmp.join("");
             const prev = hash.get(str) ? hash.get(str)+1 : 1;
             hash.set(str, prev);
             
